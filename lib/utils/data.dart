@@ -68,3 +68,5 @@ List<Map<String, dynamic>> AllVegetables = [
     "price": 80
   }
 ];
+
+List<Map<String, dynamic>> cartData = [];

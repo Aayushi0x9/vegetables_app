@@ -14,7 +14,7 @@ class VegetablesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "Homepage",
+      initialRoute: "HomePage",
       routes: {
         MyRoutes.HomePage: (context) => const HomePage(),
         MyRoutes.CartPage: (context) => const CartPage(),

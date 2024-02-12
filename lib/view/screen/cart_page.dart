@@ -17,10 +17,13 @@ class _CartPageState extends State<CartPage> {
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cart Page"),
+        title: const Text("Cart Page"),
       ),
       body: Padding(
         padding: EdgeInsets.all(16),
+        child: Column(
+          children: [],
+        ),
       ),
     );
   }

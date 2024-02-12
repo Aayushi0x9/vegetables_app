@@ -13,7 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> CartData = [];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -26,6 +25,8 @@ class _HomePageState extends State<HomePage> {
           color: Colors.white,
           size: 28,
         ),
+        // actions: [IconButton(onPressed: onPressed(){
+        // }, icon: Icons.shopping_cart)],
         title: const Text(
           "Organic Vegetables",
           style: TextStyle(
@@ -35,15 +36,16 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Column(
+      body: Stack(
         children: [
           Container(
             height: double.infinity,
             width: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/image/blur.h"),
+                image: AssetImage("assets/image/h.jpg"),
                 opacity: 0.8,
+                fit: BoxFit.fill,
               ),
             ),
             child: Padding(
@@ -64,10 +66,10 @@ class _HomePageState extends State<HomePage> {
                           gapPadding: 2,
                         ),
                         //search
-                        hintText: "Search your choice of Vegetables...",
+                        hintText: "Search Vegetables...",
                         hintStyle: const TextStyle(
                           fontSize: 18,
-                          color: Colors.white,
+                          color: Colors.black87,
                         ),
                         prefixIcon: const Icon(
                           Icons.search,
@@ -110,6 +112,13 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+                  Align(alignment: AlignmentDirectional.topStart),
+                  Text("For You",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      )),
                   Expanded(
                     child: SingleChildScrollView(
                       child: Column(
@@ -125,13 +134,13 @@ class _HomePageState extends State<HomePage> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular.(10),
                                         color: Colors.white,
                                       ),
                                       child: Image.network(
@@ -142,9 +151,15 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   Expanded(
                                     child: Container(
-                                      padding: EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Color(0xff6D9773),
+                                      ),
+                                      padding: const EdgeInsets.only(
+                                        top: 30,
+                                        bottom: 20,
+                                      ),
                                       height: h * 2,
-                                      color: Color(0xff6D9773),
                                       child: Column(
                                         children: [
                                           Text(
@@ -162,8 +177,9 @@ class _HomePageState extends State<HomePage> {
                                           Spacer(),
                                           GestureDetector(
                                             onTap: () {
-                                              Navigator.of(context)
-                                                  .pushNamed(MyRoutes.CartPage,arguments: CartData[]);
+                                              Navigator.of(context).pushNamed(
+                                                  MyRoutes.CartPage,
+                                                  arguments: ele);
                                             },
                                             child: Container(
                                               padding: EdgeInsets.all(5),
