@@ -48,9 +48,11 @@ class _HomePageState extends State<HomePage> {
                 fit: BoxFit.fill,
               ),
             ),
+            alignment: Alignment.centerLeft,
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     height: h * 0.05,
@@ -112,8 +114,8 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                  Align(alignment: AlignmentDirectional.topStart),
-                  Text("For You",
+                  // Align(alignment: Alignment.centerLeft),
+                  const Text("  For You",
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -140,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                                   Expanded(
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular.(10),
+                                        borderRadius: BorderRadius.circular(10),
                                         color: Colors.white,
                                       ),
                                       child: Image.network(
@@ -177,9 +179,18 @@ class _HomePageState extends State<HomePage> {
                                           Spacer(),
                                           GestureDetector(
                                             onTap: () {
+                                              late SnackBar snackBar;
                                               Navigator.of(context).pushNamed(
                                                   MyRoutes.CartPage,
                                                   arguments: ele);
+                                              cartData.add(ele);
+                                              snackBar = SnackBar(
+                                                content: Text(
+                                                    "${ele["name"]} Add to Cart !!"),
+                                                backgroundColor: Colors.green,
+                                                behavior:
+                                                    SnackBarBehavior.floating,
+                                              );
                                             },
                                             child: Container(
                                               padding: EdgeInsets.all(5),
